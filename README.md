@@ -1,45 +1,56 @@
-This is a simple Go application that demonstrates the usage of Kafka for asynchronous communication between microservices. The application allows creating and listing products using HTTP endpoints and consumes messages from a Kafka topic to create products asynchronously.
+# Go Kafka Product Service
 
-Features
-HTTP Server: Handles HTTP requests to create and list products.
-MySQL Database: Stores product data persistently.
-Kafka Integration: Consumes messages from a Kafka topic to create products asynchronously.
+Este é um aplicativo Go simples que demonstra o uso do Kafka para comunicação assíncrona entre microsserviços. O aplicativo permite criar e listar produtos usando pontos de extremidade HTTP e consome mensagens de um tópico Kafka para criar produtos de forma assíncrona.
 
-Prerequisites
-Go installed on your machine (installation instructions)
-Docker installed on your machine (installation instructions)
-MySQL server running with the database products available at host.docker.internal:3306.
-Kafka broker running at host.docker.internal:9094.
-librdkafka-dev installed in the Docker container.
+## Recursos
 
-Installation
-Clone the repository:
-bash
+- **Servidor HTTP**: Manipula solicitações HTTP para criar e listar produtos.
+- **Banco de Dados MySQL**: Armazena dados de produtos de forma persistente.
+- **Integração com Kafka**: Consome mensagens de um tópico Kafka para criar produtos de forma assíncrona.
 
-Copy code
-git clone https://github.com/your-username/go-kafka-product-service.git
+## Pré-requisitos
 
-Build the Docker image:
-bash
-Copy code
-docker build -t go-kafka-product-service .
-Run the Docker container:
-bash
-Copy code
-docker run -d --name go-kafka-product-service go-kafka-product-service
-Usage
+- Go instalado em sua máquina ([instruções de instalação](https://golang.org/doc/install))
+- Docker instalado em sua máquina ([instruções de instalação](https://docs.docker.com/get-docker/))
+- Servidor MySQL em execução com o banco de dados `products` disponível em `host.docker.internal:3306`.
+- Broker Kafka em execução em `host.docker.internal:9094`.
+- `librdkafka-dev` instalado no contêiner Docker.
 
-The application exposes the following HTTP endpoints:
+## Instalação
 
-POST /products: Create a new product. Send a JSON payload with the product name and price.
-GET /products: Retrieve a list of all products.
-Configuration
+1. Clone o repositório:
 
-Ensure the following environment variables are set:
+   ```bash
+   git clone https://github.com/your-username/go-kafka-product-service.git
+   ```
 
-MYSQL_DSN: MySQL data source name (root:root@tcp(host.docker.internal:3306/products)).
-KAFKA_BROKERS: Comma-separated list of Kafka brokers (host.docker.internal:9094).
-KAFKA_TOPICS: Comma-separated list of Kafka topics to consume (products).
+2. Compile a imagem Docker:
 
-License
-This project is licensed under the MIT License - see the LICENSE file for details.
+   ```bash
+   docker build -t go-kafka-product-service .
+   ```
+
+3. Execute o contêiner Docker:
+
+   ```bash
+   docker run -d --name go-kafka-product-service go-kafka-product-service
+   ```
+
+## Uso
+
+O aplicativo expõe os seguintes pontos de extremidade HTTP:
+
+- `POST /products`: Cria um novo produto. Envie um payload JSON com o nome e o preço do produto.
+- `GET /products`: Recupera uma lista de todos os produtos.
+
+## Configuração
+
+Certifique-se de que as seguintes variáveis de ambiente estejam definidas:
+
+- `MYSQL_DSN`: Nome da fonte de dados do MySQL (`root:root@tcp(host.docker.internal:3306/products)`).
+- `KAFKA_BROKERS`: Lista de brokers Kafka separados por vírgula (`host.docker.internal:9094`).
+- `KAFKA_TOPICS`: Lista de tópicos Kafka para consumir, separados por vírgula (`products`).
+
+## Licença
+
+Este projeto é licenciado sob a Licença MIT - consulte o arquivo [LICENSE](LICENSE) para obter detalhes.
