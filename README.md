@@ -21,8 +21,10 @@ Este é um aplicativo Go simples que demonstra o uso do Kafka para comunicação
 1. Clone o repositório:
 
    ```bash
-   git clone https://github.com/your-username/go-kafka-product-service.git
+   gh repo clone guilhermecrvl/products-golang-kafka-api
    ```
+
+gh repo clone guilhermecrvl/products-golang-kafka-api
 
 2. Compile a imagem Docker:
 
